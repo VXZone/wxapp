@@ -1,0 +1,84 @@
+@charset "utf-8";
+/*右侧浮窗栏*/
+.sidebar{height:281px;position:fixed;right: 10px;top: 25%;z-index: 999999;}
+.fu_right{width:46px;height:281px;position:relative;}
+.fu_right li{width:46px;height:46px;margin-bottom:1px;position:relative;}
+.hide_div{width:46px;height:46px;display:block;background:#8ac5ff;cursor:pointer;}
+.hide_div span{display: inline-block;width:28px;height:27px;}
+.show_div{width:46px;height:46px;display:none;background:#4aa4fc;cursor:pointer;}
+.kefu1 span{background:url(../img/tupian.png) -133px -20px no-repeat;margin-left:11px;margin-top:10px;}
+.fu_right li:nth-of-type(1):hover .kefu1{display:none;}
+.fu_right li:nth-of-type(1):hover .kefu2{display:block;}
+.fu_right li:nth-of-type(2):hover .dianhua1{display:none;}
+.fu_right li:nth-of-type(2):hover .dianhua2{display:block;}
+.fu_right li:nth-of-type(3):hover .pinggu1{display:none;}
+.fu_right li:nth-of-type(3):hover .pinggu2{display:block;}
+.fu_right li:nth-of-type(4):hover .weixin1{display:none;}
+.fu_right li:nth-of-type(4):hover .weixin2{display:block;}
+.fu_right li:nth-of-type(5):hover .fankui1{display:none;}
+.fu_right li:nth-of-type(5):hover .fankui2{display:block;}
+.fu_right li:nth-of-type(6):hover .dingbu1{display:none;}
+.fu_right li:nth-of-type(6):hover .dingbu2{display:block;}
+.dianhua1 span{background:url(../img/tupian.png) -170px -20px no-repeat;margin-left:11px;margin-top:13px;}
+.pinggu1 span{background:url(../img/tupian.png) -134px -51px no-repeat;margin-left:13px;margin-top:13px;}
+.weixin1 span{background:url(../img/tupian.png) -170px -52px no-repeat;margin-left:11px;margin-top:14px;}
+.fankui1 span{background:url(../img/tupian.png) -134px -79px no-repeat;margin-left:10px;margin-top:12px;}
+.dingbu1 span{background:url(../img/tupian.png) -169px -79px no-repeat;margin-left:9px;margin-top:11px;}
+.show_div span{display: inline-block;width:28px;font-size:14px;line-height:18px;color:#fff;margin-left:9px;margin-top:5px;}
+
+
+.fu_left{display:none;width:179px;height:281px;position:absolute;top:0;right:40px;}
+
+.li1{width:157px;height:279px;border:1px #4aa4fc solid;background:#ffffff !important;position:relative;}
+.nei_border{width:155px;height:277px;border:1px #b4dafe solid;position: absolute;top:0;left:0;}
+.border_arr{width:13px;height:17px;background:url(../img/border_arr.png) no-repeat;position:absolute;top:16px;left:156px;}
+.custom_service{margin-left:29px;margin-top: 10px;left:157px;}
+.custom_service li{width:110px;height:35px;border-bottom: 1px #eeeeee solid;position: relative;}
+.custom_service li a{display: block;width:100%;height:100%;cursor: pointer;}
+.custom_service li a span:nth-of-type(1){display:inline-block;width:23px;height:15px;position: absolute;top:10px;left:0;}
+.custom_service .usa_custom a span:nth-of-type(1){background:url(../img/tupian.png) 0 0 no-repeat;}
+.custom_service .uk_custom a span:nth-of-type(1){background:url(../img/tupian.png) -108px 0 no-repeat;}
+.custom_service .aus_custom a span:nth-of-type(1){background:url(../img/tupian.png) -54px 0 no-repeat;}
+.custom_service .nz_custom a span:nth-of-type(1){background:url(../img/tupian.png) -163px 0 no-repeat;}
+.custom_service .can_custom a span:nth-of-type(1){background:url(../img/tupian.png) -81px 0 no-repeat;}
+.custom_service .euro_custom a span:nth-of-type(1){background:url(../img/tupian.png) -135px 0 no-repeat;}
+.custom_service .asia_custom a span:nth-of-type(1){background:url(../img/tupian.png) -27px 0 no-repeat;}
+.custom_service li a span:nth-of-type(2){font-size:14px;line-height:35px;color:#585858;margin-left:34px;}
+.custom_service li a span:nth-of-type(2):hover{color:#4aa4fc;}
+
+
+/*免费电话*/
+.fu_left2{display:none;width:179px;height:281px;position:absolute;top:-47px;right:40px;}
+.li2{width:157px;height:44px;border:1px #4aa4fc solid;background:#ffffff;position:relative;margin-top:47px;font-size:16px;line-height:46px;text-indent: 11px;font-weight: bold;}
+.li2 .nei_border{width:155px;height:42px;border:1px #b4dafe solid;position: absolute;top:0;left:0;}
+.li2 .border_arr{width:13px;height:17px;background:url(../img/border_arr.png) no-repeat;position:absolute;top:14px;left:156px;}
+
+
+/*微信交流*/
+.fu_left4{display:none;width:179px;height:281px;position:absolute;top:-141px;right:40px;}
+.li4{width:157px;height:279px;border:1px #4aa4fc solid;background:#ffffff;position:relative;}
+.nei_border{width:155px;height:277px;border:1px #b4dafe solid;position: absolute;top:0;left:0;}
+.li4 .border_arr{width:13px;height:17px;background:url(../img/border_arr.png) no-repeat;position:absolute;top:156px;left:156px;}
+.erweima{display: inline-block;width:126px;height:126px;background:url(../img/tupian.png) 0 -20px no-repeat;margin-left:16px;margin-top:8px;z-index:10;}
+.li4 span,.li4 a{font-size: 14px;color:#000000;}
+
+.li4 span a:hover{color:#4aa4fc;}
+.wei_title{margin-left: 16px;margin-top:10px;position:relative;top:6px;}
+.penguin{display: inline-block;width:12px;height:13px;background:url(../img/tupian.png) -133px -116px no-repeat;margin-left: 16px;}
+.liuxue span:nth-of-type(2){margin-left:0;}
+.liuxue span:nth-of-type(3){margin-left: 40px;}
+.jiaoliu span:nth-of-type(2){margin-left:0;}
+.jiaoliu span:nth-of-type(3){margin-left:38px;}
+.liuxue{z-index:100;}
+.jiaoliu{z-index:100;}
+
+.fu_right li:nth-of-type(1):hover .fu_left{display: block;}
+.fu_right li:nth-of-type(2):hover .fu_left2{display: block;}
+.fu_right li:nth-of-type(4):hover .fu_left4{display: block;}
+.fu_right li:nth-of-type(5):hover .fu_left5{display: block;}
+
+/*反馈*/
+.fu_left5{display:none;width:179px;height:281px;position:absolute;top:-47px;right:40px;}
+.fu_left5 .nei_border a:nth-of-type(1){font-size: 15px; display: block; width: 60px; float: left; text-align: right;color:#000000;}
+.fu_left5 .nei_border a:nth-of-type(2){font-size: 15px; display: block; width: 80px;float: right;text-align: left;color:#000000;}
+.fu_left5 .nei_border a:hover{color:#4aa4fc}

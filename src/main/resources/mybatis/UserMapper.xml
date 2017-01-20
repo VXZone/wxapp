@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zblog.core.dal.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.zblog.core.dal.entity.User" >
+        <id property="id" column="id" jdbcType="INTEGER" />
+        <result property="username" column="username" jdbcType="VARCHAR" />
+        <result property="password" column="password"  jdbcType="VARCHAR" />
+        <result property="mobile" column="mobile" jdbcType="VARCHAR" />
+        <result property="email" column="email" jdbcType="VARCHAR" />
+        <result property="description" column="description" jdbcType="VARCHAR" />
+        <result property="role" column="role" jdbcType="VARCHAR" />
+        <result property="status" column="status" jdbcType="TINYINT" />
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP" />
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id,username,password,avatar,mobile,email,description,role,status,update_time,create_time
+    </sql>
+
+   <select id="loadById" parameterType="java.lang.Integer"  resultMap="BaseResultMap">
+      select  <include refid="Base_Column_List" /> from wx_user where id = #{id}
+   </select>
+   
+   <select id="loadByNameAndPass"  resultMap="BaseResultMap">
+      select  <include refid="Base_Column_List" />
+         from wx_user where username = #{username} and password=md5(#{password})
+   </select>
+   
+   <select id="list" parameterType="PageModel"  resultMap="BaseResultMap">
+      select  <include refid="Base_Column_List" /> from wx_user
+   </select>
+   
+   <select id="count" resultType="long">
+     select count(*) from wx_user
+   </select>
+   
+   <insert id="insert" parameterType="User">
+      insert into wx_user(username,password,avatar,mobile,email,description,role,status,update_time,create_time)
+         values(#{username},#{password},#{avatar},#{mobile},#{email},#{description},#{role},#{status},#{updateTime},#{createTime})
+   </insert>
+   
+   <update id="update" parameterType="User">
+     update wx_user set username=#{username},email=#{email},description=#{description}
+     <if test="role!=null and role!=''">
+        ,role=#{role}
+     </if>
+     <if test="password!=null and password!=''">
+       ,password=#{password}
+     </if>
+     where id=#{id}
+   </update>
+
+   <delete id="deleteById">
+	 delete from wx_user where id = #{id}
+  </delete>
+	
+</mapper>

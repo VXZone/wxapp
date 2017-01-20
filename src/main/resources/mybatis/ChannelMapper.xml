@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zblog.core.dal.mapper.ChannelMapper">
+   <resultMap id="BaseResultMap" type="com.zblog.core.dal.entity.Channel" >
+      <id property="id" column="id" jdbcType="INTEGER" />
+      <result property="name" column="name" jdbcType="VARCHAR" />
+      <result property="leftv" column="leftv" jdbcType="INTEGER" />
+      <result property="rightv" column="rightv" jdbcType="INTEGER" />
+      <result property="visible" column="visible" jdbcType="TINYINT" />
+      <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+   </resultMap>
+   <sql id="Base_Column_List" >
+      id,name,leftv,rightv,visible,create_time
+   </sql>
+
+   <select id="list" resultType="MapContainer">
+      select id, name, level,visible from view_channel
+   </select>
+   
+   <select id="loadByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+      select id, name,leftv, rightv, visible from wx_channel where name = #{name}
+   </select>
+   
+   <select id="loadById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+      select id, name, visible from wx_channel where id = #{id}
+   </select>
+   
+   <select id="loadChildren" parameterType="Channel" resultMap="BaseResultMap">
+      select id, name from wx_channel where leftv > #{leftv} and rightv  &lt; #{rightv}
+   </select>
+   
+   <insert id="insert" parameterType="Channel">
+      insert into wx_channel(id,name,leftv,rightv,visible,create_time)
+         values(#{id},#{name},#{leftv},#{rightv},#{visible},#{createTime})
+   </insert>
+   <update id="updateInsertLeftv" parameterType="int">
+     update wx_channel set leftv=leftv+2 where leftv &gt; #{rightv}
+   </update>
+   <update id="updateInsertRightv" parameterType="int">
+     update wx_channel set rightv=rightv+2 where rightv>=#{rightv}
+   </update>
+   
+   <delete id="delete">
+      delete from wx_channel where leftv between #{leftv} and #{rightv}
+   </delete>
+   <update id="updateDeleteLeftv">
+     update wx_channel set leftv=leftv-#{length} where leftv>#{leftv}
+   </update>
+   <update id="updateDeleteRightv">
+     update wx_channel set rightv=rightv-#{length}  where rightv>#{rightv}
+   </update>
+
+   <delete id="deleteById">
+	 delete from wx_channel where id = #{id}
+  </delete>
+	
+</mapper>

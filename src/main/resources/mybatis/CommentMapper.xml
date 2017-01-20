@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zblog.core.dal.mapper.CommentMapper">
+    <resultMap id="BaseResultMap" type="com.zblog.core.dal.entity.Comment" >
+        <id property="id" column="id" jdbcType="INTEGER" />
+        <result property="title" column="title" jdbcType="VARCHAR" />
+        <result property="content" column="content" jdbcType="VARCHAR" />
+        <result property="postId" column="post_id" jdbcType="INTEGER" />
+        <result property="parent" column="parent" jdbcType="INTEGER" />
+        <result property="creator" column="creator" jdbcType="INTEGER" />
+        <result property="email" column="email" jdbcType="VARCHAR" />
+        <result property="url" column="url" jdbcType="VARCHAR" />
+        <result property="agent" column="agent" jdbcType="VARCHAR" />
+        <result property="ip" column="ip" jdbcType="VARCHAR" />
+        <result property="status" column="status" jdbcType="VARCHAR" />
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id,content,post_id,parent,creator,email,url,agent,ip,status,create_time
+    </sql>
+
+   <select id="loadById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List" /> from wx_comment where id = #{id}
+   </select>
+   
+   <select id="list" parameterType="PageModel" resultType="MapContainer">  
+     select c.id, c.post_id, c.url, c.email, c.ip, c.content, c.creator, c.status, c.create_time, p.title, t.id as pid, t.creator as pcreator
+       from wx_comment c left join post p on c.post_id=p.id left join wx_comment t on c.parent=t.id
+       where c.status in <foreach collection="query.status" open="(" close=")" item="item" separator=",">#{item}</foreach>
+   </select>
+   
+   <select id="listCountByGroupStatus" resultType="MapContainer">
+     select status, count(*) as count from wx_comment group by status
+   </select>
+   
+   <select id="listRecent" resultType="CommentVO">  
+     select <include refid="Base_Column_List" /> from wx_comment c order by c.create_time desc limit 10
+   </select>
+   
+   <select id="listByPost" resultType="CommentVO">
+     select id, content, creator, url, status, parent, create_time from wx_comment c
+     where post_id=#{postId} and (status='approve' <if test="creator!=null and creator!=''"> or creator=#{creator} </if>)
+     order by c.create_time desc
+   </select>
+   
+   <select id="count" resultType="long">
+     select count(*) from wx_comment
+   </select>
+   
+   <insert id="insert" parameterType="Comment">
+      insert into wx_comment(id,post_id, parent, email, url, ip, agent,content, creator, create_time)
+         values(#{id},#{postId},#{parent},#{email},#{url},#{ip},#{agent},#{content},#{creator},#{createTime})
+   </insert>
+   
+   <update id="setStatus">
+     update wx_comment set status=#{status} where id=#{commentid}
+   </update>
+
+   <delete id="deleteById">
+	 delete from wx_comment where id = #{id}
+  </delete>
+	
+</mapper>

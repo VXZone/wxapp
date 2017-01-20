@@ -1,0 +1,490 @@
+@charset "utf-8";
+/* CSS Document */
+body,h1,h2,h3,h4,p,ul,li,dl,dt,dd,ol{margin:0; padding:0;font-size:14px;}
+
+body{font-family:"微软雅黑",Arial,sans-serif;}
+html,body{width:100%;height:100%;font-size: 14px;overflow-x:hidden;}
+body{min-width: 1200px;overflow-x:hidden;}
+li{list-style:none;}
+img{margin:0px;padding:0px;border: none;}
+a{text-decoration:none;}
+.clear{clear: both;}
+html,body{width: 100%;height: 100%;}
+input{border:none;outline:none;font-family:"微软雅黑";}
+select{font-family:"微软雅黑";}
+/*=========头部======*/
+/*头部*/
+.header{
+	width: 100%;
+	background: #f4f4f4;
+	height: 40px;
+    min-width: 1200px;
+}
+.header_con{
+	width: 1200px;
+    margin: 0 auto;
+    color: #333;	
+}
+.header_left{
+	width: 50%;
+	float: left;
+	display: inline-block;
+	height:40px;
+	line-height:40px;
+}
+.header_left span{
+	margin-right: 16px;
+        font-size:14px;
+}
+.header_left span a{
+	margin:0px 10px;
+	color: #333;
+ font-size:14px;
+}
+.header_left span a:hover{
+	color: #ff6600;
+}
+.header_right{
+	width: 50%;
+	float: right;
+	display: inline-block;
+	text-align: right;
+	color: #333;
+}
+.admin_con{
+	width: 100%;
+	height: 40px;
+	display: inline-block;
+	position: relative;
+ font-size:14px;
+}
+.admin_con span{
+	height:40px;
+	line-height:40px;
+ font-size:14px;
+}
+
+.admin_con span.hello{
+	padding-right: 120px;
+	display: inline-block;
+ font-size:14px;
+}
+.admin_con a{
+	color: #333;
+height:40px;
+	line-height:40px;
+display:inline-block;
+ font-size:14px;
+}
+.admin_ple{
+	width: 120px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	z-index: 100;
+}
+.admin_ple span{
+	background: url(../img/index/tubiao.png) 110px 18px no-repeat;
+	width: 100%;
+	height: 40px;
+	display: inline-block;
+	text-indent: .5em;
+	text-align: left;
+ font-size:14px;
+}
+.admin_ple span.esp_show{
+	background: url(../img/index/tubiao.png) -36px 18px no-repeat;
+}
+.admin_ple p{
+	text-align: center;
+    border: #F4F4FF solid 1px;
+    border-top: none;
+    background: #f4f4f4;
+    display: none;
+ font-size:14px;
+}
+.admin_ple p a{
+	width: 100%;
+	display: inline-block;
+	height: 26px;
+	line-height: 26px;
+ font-size:14px;
+}
+.admin_con a:hover{
+	color: #ff6600;
+}
+.admin_con a.hover_e{
+	margin-right: 10px;
+	color: #ff6600;
+}
+/*留学e网logo*/
+.eduwo{
+	width: 1200px;
+	position: relative;
+	margin: 0 auto;
+	padding: 30px 0px 30px 0px;
+	/* height: 80px; */
+}
+.eduwo_con{
+	width: 434px;
+	height: 34px;
+	line-height: 34px;
+	margin: 0 auto;
+	border: #ff6600 solid 2px;
+	position: relative;
+	margin-top: 10px;
+	overflow: hidden;
+}
+.eduwo_con input{
+	border: none;
+	outline: none;
+	height: 30px;
+	line-height: 30px;
+	width: 308px;
+	margin: 0px 0px 0px 66px;
+	color: #666;
+	font-size:14px;
+	text-indent: 1em;
+	font-family: "Microsoft Yahei", tahoma,arial,"Hiragino Sans GB",sans-serif;
+}
+.eduwo_con em{
+	position: absolute;
+	left: 66px;
+	top:9px;
+	width: 3px;
+	height: 16px;
+	display: inline-block;
+	border-left: #818181 solid 1px;
+}
+.wire{
+	width: 66px;
+	display: inline-block;
+	position: absolute;
+	left: 0px;
+	height: 34px;
+	cursor: pointer;
+	background: url(../img/index/tubiao.png) 48px 15px no-repeat;
+}
+.wire_esp{
+	background: url(../img/index/tubiao.png) -98px 15px no-repeat;
+}
+.wire span{	
+	width: 66px;
+    height: 34px;
+    display: inline-block;
+    text-indent: 1em;
+    color: #666;
+ font-size:14px;
+}
+.wire_con{
+	border: #ff6600 solid 2px;
+	background: #fff;
+    z-index:999;
+    display: none;
+    position: relative;
+    left: -2px;
+    width:64px;
+    top: 0px;
+    border-top:none;
+}
+.wire_con li{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-indent: 1em;
+}
+.wire_con li:hover{
+	background: #f1f1f1;
+}
+.eduwo_con input.search{
+	width: 60px;
+	display: inline-block;
+	background: #ff6600 url(../images/common/search.png) center no-repeat;
+
+	position: absolute;
+	right: 0px;
+	cursor: pointer;
+}
+.hot_search{width: 434px;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 auto;
+    position: relative;
+    font-size: 13px;}
+
+.hot_search a{margin-right: 10px;color: #999999;}
+.hot_search a:hover{color: #ff6600;}
+
+.e_logo{
+	position: absolute;
+	left: 0px;
+	top: 34px;
+	/* position: relative; */
+	/* margin-top: 10px; */
+	/* width: 434px; */
+	/* height: 34px; */
+}
+.e_link{
+	position: absolute;
+	right: 72px;
+	top: 40px;
+}
+/*导航条*/
+.nav{
+	width: 100%;
+    background: #333;
+    height: 40px;
+    min-width: 1200px;
+}
+.nav_box{
+	width: 1200px;
+	margin: 0 auto;
+	font-size: 16px;
+}
+.want{
+	width: 220px;
+	float: left;
+	height: 40px;
+	background: url(../img/index/tubiao.png) 0px -106px no-repeat;
+}
+
+.want a.want_con{
+	font-size: 16px;
+	color: #fff;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	text-indent: 2em;
+	width: 100%;
+	background: url(../img/index/tubiao.png) 110px -148px no-repeat;
+
+}
+.want a.want_con_esp{
+	background: url(../img/index/tubiao.png) -14px -148px no-repeat;
+}
+.want_main{
+	position:relative; 
+	left:0px;
+	top:0px; 
+	width:220px; 
+	z-index: 100;
+	display: none;
+        border: 1px solid #eee;  
+}
+.sec_nav{
+	width: 100%;
+	height: 342px;
+}
+.sec_nav{
+	background: #fff;
+	opacity: 0.9;
+}
+.sec_navCon{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 120;
+	padding: 10px;
+}
+.lastDl h3 strong{
+	display:block; 
+	height:30px; 
+	line-height:30px; 
+	padding-left:30px; 
+	background:url(../img/index/tubiao.png) 0px -328px no-repeat;
+	color: #ff6600;
+	font-size: 14px;
+}
+.lastDl h3 .strong2{
+	background:url(../img/index/tubiao.png) 0px -374px no-repeat;
+}
+.lastDl h3 .strong3{
+	background:url(../img/index/tubiao.png) 0px -420px no-repeat;
+}
+.lastDl p{
+	line-height: 28px;
+	
+}
+.lastDl p span,.lastDl p a{
+	
+	color: #414141;
+}
+.lastDl p a{
+	margin-right: 10px;
+	font-size: 12px;
+}
+.lastDl p a:hover{
+	color: #ff6600;
+}
+.nav_list{
+	width: 980px;
+	float: right;
+}
+.nav_list li{
+	position: relative;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    margin-left:20px;
+}
+.nav_list li a{
+	font-size: 16px;
+	color: #fff;
+    display: inline-block;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    padding:0px 20px;
+}
+.nav_list li:hover{
+	background: #ff6600;
+}
+.nav_list .active{
+	background: #ff6600;
+}
+
+.nav_list li:hover div {
+display:block;
+}
+
+
+.free_con{
+	width:30px;
+	height: 19px;
+	display: inline-block;
+	background: url(../img/index/icon_10.png) no-repeat;
+	position: absolute;
+	top: -8px;
+	right: -20px;
+	z-index: 100;
+}
+.nav_list li a span{
+	width: 100%;
+	display: inline-block;
+}
+.nav_list li .query{
+	position: absolute;
+	top: 40px;
+	left: 0px;
+	z-index: 100;
+	width: 98%;
+	display:none;
+        border: 1px solid #eee;
+}
+.nav_list li .query a{
+	/* height: 36px;
+	line-height: 36px; */
+	background: #fff;
+	width: 100%;
+	font-size: 14px;
+	color: #333;
+	display: inline-block;
+	text-align: center;
+	margin: 0px;
+    padding: 0px;
+}
+.nav_list li .query a:hover{
+	background: #FF6600;
+	color: #fff;
+}
+/*===============================底部===============================*/
+.footer{
+	width: 100%;
+	display: inline-block;
+	background: #666;
+	margin-top: 40px;
+	min-width: 1200px;
+}
+.footer_con{
+	    width: 1200px;
+    margin: 0 auto;
+    padding: 15px 0px;
+}
+.blogroll{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: #999 solid 1px;
+}
+.blogroll span{
+	color: #ccc;
+	margin:0px 10px;
+	font-size: 14px;
+}
+.blogroll a{
+	color: #ccc;
+	margin-right: 24px;
+	font-size: 12px;
+}
+.blogroll a:hover{
+	color: #ff6600;
+}
+
+.blogroll_dow{
+	width: 100%;
+	display: inline-block;
+	margin-top: 24px;
+	border-bottom: #999 solid 1px;
+}
+.blogroll_dow_left{
+	width: 720px;
+	float: left;
+	padding-left: 20px;
+}
+.blogroll_dow_right{
+	width: 360px;
+	float: right;
+	margin-top: 14px;
+}
+.serve{
+	width: 180px;
+	float: left;
+}
+.serve span{
+	width: 100%;
+	display: inline-block;
+	color: #ccc;
+	height: 40px;
+	line-height: 30px;
+	font-size: 16px;
+}
+.serve p a{
+	width: 40%;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	color: #ccc;
+	font-size: 14px;
+	
+}
+.serve p a:hover{
+	color: #ff6600;
+}
+.blogroll_dow_right a{
+	width: 180px;
+	display: block;
+	text-align: center;
+	float: left;
+}
+.blogroll_dow_right a img{
+	width: 128px;
+	height: 128px;
+}
+.blogroll_dow_right a span{
+	color: #ccc;
+	width: 100%;
+	display: inline-block;
+	height: 60px;
+	line-height: 60px;
+	font-size: 14px;
+}
+.backups{
+	text-align: center;
+	margin-top: 16px;
+	padding-bottom: 20px;
+}
+.backups p{
+	color: #ccc;
+	height: 24px;
+	line-height: 24px;
+} 

@@ -1,0 +1,7 @@
+@charset "utf-8";
+/*切换导航*/
+.Response{width:100%;margin-top:2.2rem;}
+.my-res{width:14.25rem;height:6.95rem;border: 1px #cccccc solid;overflow: hidden;font-size: 0.5rem;color:#cccccc;padding-left: 0.25rem;outline:none;resize:none;line-height: 0.75rem;margin-top:0.5rem;margin-left: 0.75rem;}
+.transfer-p{display: block;width:1rem;height:0.75rem;background: url(../img/pho.png) no-repeat;background-size:100% 100%;margin-left: 0.75rem;}
+.submit{display: block;width:14.5rem;height:1.5rem;border-radius: 10px;background: #58b2ff;color:#fff;font-size: 0.6rem;line-height: 1.5rem;text-align: center;margin-top:0.5rem;margin-left: 0.75rem;}
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" version="2.1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                            http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+  <description>common function</description>
+  <display-name>fns</display-name>
+  <tlib-version>1.0</tlib-version>
+  <short-name>common function</short-name>
+  <uri>/WEB-INF/tld/function.tld</uri>
+  <function>
+    <name>cookieValue</name>
+    <function-class>com.zblog.core.tag.FunctionHelper</function-class>
+    <function-signature>
+      java.lang.String cookieValue(java.lang.String)
+    </function-signature>
+    <example>${z:cookieValue('name')}</example>
+  </function>
+  
+  <function>
+    <name>getDomainLink</name>
+    <function-class>com.zblog.core.tag.FunctionHelper</function-class>
+    <function-signature>java.lang.String getDomainLink(java.lang.String)</function-signature>
+    <example>${z:getDomainLink('http://github.com/')}</example>
+  </function>
+  
+  <function>
+    <name>fileExt</name>
+    <function-class>com.zblog.core.tag.FunctionHelper</function-class>
+    <function-signature>java.lang.String fileExt(java.lang.String)</function-signature>
+    <example>${z:fileExt('some.png')}</example>
+  </function>
+  <function>
+    <name>join</name>
+    <function-class>com.zblog.core.tag.FunctionHelper</function-class>
+    <function-signature>java.lang.String join(java.util.Collection,java.lang.String)</function-signature>
+  </function>
+</taglib>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zblog.core.dal.mapper.PostMapper">
+    <resultMap id="BaseResultMap" type="com.zblog.core.dal.entity.Post" >
+        <id property="id" column="id" jdbcType="INTEGER" />
+        <result property="title" column="title" jdbcType="VARCHAR" />
+        <result property="description" column="description" jdbcType="VARCHAR" />
+        <result property="content" column="content" jdbcType="VARCHAR" />
+        <result property="type" column="type" jdbcType="VARCHAR" />
+        <result property="parent" column="parent" jdbcType="INTEGER" />
+        <result property="channelId" column="channel_id" jdbcType="INTEGER" />
+        <result property="status" column="status" jdbcType="VARCHAR" />
+        <result property="commentStatus" column="comment_status" jdbcType="VARCHAR" />
+        <result property="commentCount" column="comment_count" jdbcType="INTEGER" />
+        <result property="viewCount" column="view_count" jdbcType="INTEGER" />
+        <result property="creator" column="creator" jdbcType="VARCHAR" />
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP" />
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <resultMap id="PostVOResultMap" type="com.zblog.service.vo.PostVO" extends="BaseResultMap">
+        <association property="user" column="creator"  javaType="com.zblog.core.dal.entity.User" select="com.zblog.core.dal.mapper.UserMapper.loadById"/>
+        <association property="channel" column="channelId"  javaType="com.zblog.core.dal.entity.Channel" select="com.zblog.core.dal.mapper.ChannelMapper.loadById"/>
+        <collection property="tags" column="id" javaType="list"  ofType="com.zblog.core.dal.entity.Tag" select="com.zblog.core.dal.mapper.TagMapper.getTagsByPost" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+      id,title,description,content,type,parent,channel_id,status,comment_status,comment_count,view_count,creator,update_time,create_time
+    </sql>
+
+   <select id="loadById" parameterType="java.lang.Integer" resultMap="PostVOResultMap">
+      select <include refid="Base_Column_List" /> from wx_post where id = #{id}
+   </select>
+   
+  <!--  <select id="loadReadById" parameterType="java.lang.String" resultType="MapContainer">  
+      select p.id, p.title, p.content, p.type, p.channel_id, c.name as channelName, p.parent, p.status, p.creator, p.view_count, p.comment_count, p.create_time, u.nickName
+      from post p left join channel c on p.channel_id=c.id left join user u on p.creator=u.id
+      where p.id = #{id}
+   </select> -->
+   
+   <select id="getNextPost" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select id,title from wx_post where type='post' and create_time >
+       (select create_time from wx_post where id=#{postId}) limit 1
+   </select>
+   
+   <select id="getPrevPost" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select id,title from wx_post where type='post' and create_time &lt;
+         (select create_time from wx_post where id=#{postId}) order by create_time desc limit 1
+   </select>
+   
+   <select id="list" parameterType="PageModel" resultType="java.lang.String">  
+      select id from wx_post p where p.type=#{query.type} order by p.create_time desc
+   </select>
+   
+   <select id="listPage" resultType="PageVO" parameterType="boolean">
+      <!-- 必须使用_parameter 否则There is no getter for property named 'onlyParent' in 'class java.lang.Boolean'-->
+      select id, title, parent from wx_post where type='page' <if test="_parameter"> and parent='Root'</if>
+   </select>
+   
+   <select id="listRecent" resultType="java.lang.Integer">
+      select id from wx_post where type='post'
+        <if test="creator!=null and creator!=0">
+          and creator=#{creator} 
+        </if> order by create_time desc limit #{nums}
+   </select>
+   
+   <select id="listByChannel" parameterType="PageModel" resultType="java.lang.String">
+      select p.id from wx_post p inner join channel c on p.channel_id=c.id
+        where p.type='post' and c.leftv>=#{query.channel.leftv} and c.rightv &lt;= #{query.channel.rightv} order by p.create_time desc
+   </select>
+   
+   <select id="listByTag" parameterType="PageModel" resultType="java.lang.String">
+      select p.id from tag t inner join wx_post p on t.postId=p.id
+        where p.type='post' and t.name=#{query.tagName} order by p.create_time desc
+   </select>
+   
+   <select id="listArchive" resultType="MapContainer">
+      select create_time ,count(*) as count from wx_post where type='post' group by date_format(create_time,'%Y%m') order by create_time desc
+   </select>
+   
+   <select id="listByMonth" parameterType="PageModel" resultType="java.lang.String">
+      select id from wx_post where type='post' and date_format(create_time,'%Y%m')=date_format(#{query.yearMonth},'%Y%m') order by create_time desc
+   </select>
+   
+   <select id="count" resultType="long">
+     select count(*) from wx_post
+   </select>
+   
+   <insert id="insert" parameterType="Post" useGeneratedKeys="true" keyProperty="id">
+       <selectKey keyProperty="id" resultType="java.lang.Integer">
+           select LAST_INSERT_ID()
+       </selectKey>
+      insert into wx_post(id,title,description,content,type,parent,channel_id,status,comment_status,comment_count,view_count,create_time,creator,update_time)
+         values(#{id},#{title},#{description},#{content, jdbcType=CLOB},#{type},#{parent},#{channelId},#{status},#{commentStatus},#{commentCount},#{viewCount},#{createTime},#{creator},#{updateTime})
+   </insert>
+   
+   <update id="update" parameterType="Post">
+     update wx_post set title=#{title},description=#{description}, content=#{content, jdbcType=CLOB},parent=#{parent}, status=#{status},
+         <if test="channelId!=null and channelId!=''">
+           channel_id=#{channelId},
+         </if>
+         comment_status=#{commentStatus}, update_time=#{updateTime}
+     where id=#{id}
+   </update>
+   
+   <update id="updateChannel">
+     update wx_post set channel_id=#{newChannelId} where channel_id in
+       <foreach collection="oldChannelIds" item="item" open="(" separator="," close=")">
+        #{item}
+       </foreach>
+   </update>
+   
+   <update id="addViewCount">
+     update wx_post set view_count=viewCount+#{count} where id=#{postId}
+   </update>
+   
+   <update id="addCommentCount">
+     update wx_post set comment_count=commentCount+#{count} where id = (select postId from comment where id=#{commentid} and status='approve')
+   </update>
+
+   <delete id="deleteById">
+	 delete from wx_post where id = #{id}
+  </delete>
+	
+</mapper>

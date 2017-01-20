@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <typeAliases>
+    <!-- 给实体Bean一个别名 -->
+    <typeAlias alias="MapContainer" type="com.zblog.core.plugin.MapContainer" />
+    <typeAlias alias="PageModel" type="com.zblog.core.plugin.PageModel" />
+    
+    <typeAlias alias="User" type="com.zblog.core.dal.entity.User" />
+    <typeAlias alias="Channel" type="com.zblog.core.dal.entity.Channel" />
+    <typeAlias alias="Post" type="com.zblog.core.dal.entity.Post" />
+    <typeAlias alias="Upload" type="com.zblog.core.dal.entity.Upload" />
+    <typeAlias alias="Link" type="com.zblog.core.dal.entity.Link" />
+    <typeAlias alias="Comment" type="com.zblog.core.dal.entity.Comment" />
+    <typeAlias alias="Option" type="com.zblog.core.dal.entity.Option" />
+    <typeAlias alias="App" type="com.zblog.core.dal.entity.App" />
+    <typeAlias alias="Category" type="com.zblog.core.dal.entity.Category" />
+    
+    <typeAlias alias="PostVO" type="com.zblog.service.vo.PostVO" />
+    <typeAlias alias="PageVO" type="com.zblog.service.vo.PageVO" />
+    <typeAlias alias="CommentVO" type="com.zblog.service.vo.CommentVO" />
+    <typeAlias alias="UploadVO" type="com.zblog.service.vo.UploadVO" />
+    <typeAlias alias="AppVO" type="com.zblog.service.vo.AppVO" />
+  </typeAliases>
+  <mappers>
+    <mapper resource="mybatis/UserMapper.xml" />
+    <mapper resource="mybatis/ChannelMapper.xml" />
+    <mapper resource="mybatis/PostMapper.xml" />
+    <mapper resource="mybatis/UploadMapper.xml" />
+    <mapper resource="mybatis/LinkMapper.xml" />
+    <mapper resource="mybatis/CommentMapper.xml" />
+    <mapper resource="mybatis/OptionMapper.xml" />
+    <mapper resource="mybatis/TagMapper.xml" />
+    <mapper resource="mybatis/AppMapper.xml" />
+    <mapper resource="mybatis/CategoryMapper.xml" />
+  </mappers>
+</configuration>

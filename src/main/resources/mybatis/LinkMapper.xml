@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zblog.core.dal.mapper.LinkMapper">
+   <resultMap id="BaseResultMap" type="com.zblog.core.dal.entity.Link" >
+      <id property="id" column="id" jdbcType="INTEGER" />
+      <result property="name" column="name" jdbcType="VARCHAR" />
+      <result property="url" column="url" jdbcType="VARCHAR" />
+      <result property="note" column="note" jdbcType="VARCHAR" />
+      <result property="visible" column="visible" jdbcType="TINYINT" />
+      <result property="creator" column="creator" jdbcType="INTEGER" />
+      <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+   </resultMap>
+   <sql id="Base_Column_List" >
+      id,name,url,note,visible,creator,create_time
+   </sql>
+
+   <select id="list" resultType="Link">  
+      select <include refid="Base_Column_List" /> from wx_link order by create_time desc
+   </select>
+   <select id="loadById" resultType="Link" parameterType="java.lang.String">  
+      select <include refid="Base_Column_List" /> from wx_link where id=#{id}
+   </select>
+   
+   <insert id="insert" parameterType="Link">
+      insert into wx_link(name,url,note,visible,creator,create_time)
+         values(#{name}, #{url}, #{note}, #{visible}, #{creator}, #{createTime})
+   </insert>
+   
+   <update id="update" parameterType="Link">
+     update wx_link set name=#{name},url=#{url},note=#{note} where id=#{id}
+   </update>
+   
+   <delete id="deleteById">
+	 delete from wx_link where id = #{id}
+  </delete>
+	
+</mapper>

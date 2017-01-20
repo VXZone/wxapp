@@ -1,0 +1,74 @@
+*{margin:0;padding:0;}
+li{ list-style:none;}
+a{ text-decoration:none;}
+.clear{ zoom:1;}
+.clear:after{ content:"";display:block; clear:both;}
+body{font-family:"微软雅黑";}
+input{border:none;outline:none;}
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color: #ccc;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #ccc;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #ccc;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #ccc;
+}
+/*搜索框*/
+.search{width:100%;margin-top:2.175rem;margin-bottom: 0.25rem;overflow: hidden;}
+.inp-wrap{width:14.475rem;margin-left:0.75rem; margin-top:0.5rem;}
+.search .entry{width:11.45rem;height:1.45rem;border:1px #58b2ff solid;font-size: 0.5rem;line-height: 1.45rem;color:#ccc;text-indent: 0.25rem;float:left;-webkit-appearance:none;}
+.search .entry{font-size: 0.5rem;line-height: 1.45rem;color:#333;text-indent: 0.25rem;font-family:"微软雅黑";float:left;-webkit-appearance:none;border-radius: 0px;}
+.btn{width:3.025rem;height: 1.45rem;background: #58b2ff;font-size: 0.6rem;line-height: 1.525rem;color:#fff;float:right;text-align: center;float:right;-webkit-appearance:none;border-radius: 0px;}
+/*切换导航*/
+.interlocution{width:14.5rem;height: 1.5rem;border-bottom: 1px #e7e7e7 solid;margin:0 auto;overflow:hidden;}
+.inter-left{float:left;}
+.inter-left li{float:left;width:3rem;margin-right: 0.4rem;height: 1.5rem;position: relative;}
+.inter-left li span{display: inline-block;width:100%;font-size: 0.64rem;line-height: 1.5rem;text-align: center;}
+.inter-left li span:nth-of-type(1){position:absolute;top:0;left:0;}
+.inter-left li span:nth-of-type(1) a{color:#000;}
+.inter-left li span:nth-of-type(2){position:absolute;left:0;bottom:0;}
+.inter-left .inter-show span:nth-of-type(1) a{color:#58b2ff;}
+.inter-left .inter-show span:nth-of-type(1) a:visited{color:#58b2ff;}
+.inter-left .inter-show span:nth-of-type(2){background:#58b2ff;width: 3.2rem;height:0.1rem;}
+.inter-right{float:right;}
+.inter-right a{display: block;width:100%;height:100%;}
+.inter-right span:nth-of-type(1){display: block;width: 0.7rem;height: 0.7rem;background:url(/resource/img/icon1.png) no-repeat;background-size:100% 100%;position: relative;top: 0.36rem;right:0.25rem;float:left;}
+.inter-right span:nth-of-type(2){font-size: 0.64rem;line-height: 1.5rem;color:#ffa036;position: relative;float:left;}
+.ma-none{margin-right:0px !important;}
+/*回答*/
+.answer{width:100%;overflow-x:hidden;overflow-y: scroll; position:relative;}
+.con-wrap{width:100%;display:none;}
+.con-show{display: block;}
+.con-wrap ul{width:100%;}
+.con-wrap li{width:100%;border-bottom: 1px #e7e7e7 solid;}
+.con-left1{width:2.525rem;float:left;position:relative;}
+.con-left1 span{width:1.25rem;height: 1.25rem;display:block;border-radius: 50%;background:#6699ff;font-size: 0.6rem;color:#fff;text-align: center;line-height:1.25rem;margin-left: 0.75rem;}
+.con-left2{width:2.525rem;float:left;position:relative;margin-bottom: 0.2rem;}
+.con-left2 span{width:1.25rem;height: 1.25rem;display:block;border-radius: 50%;background:#ffa036;font-size: 0.6rem;color:#fff;text-align: center;line-height:1.25rem;margin-left: 0.75rem;}
+.con-right{float:right;margin-right:0.75rem;}
+.title-wrap{height:1.525rem;margin-top:0.175rem;}
+.user-ask{float:left;display: inline-block;font-size:0.55rem;line-height:1.525rem;color:#333333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:0.55rem;line-height: 1.2rem;color:#333333;width:9.5rem;}
+.collect{float:right;position:relative;width:2.2rem;height: 1.2rem;cursor:pointer;}
+.collect span{position:absolute;}
+.coll{background:url(/resource/img/star1.png) no-repeat;background-size:0.6rem 0.575rem;background-position: 0 0.35rem;font-size:0.55rem;line-height: 1.2rem;color:#333;text-indent:0.7rem;width: 100%;}
+.ect{background:url(/resource/img/star2.png) no-repeat;background-size:0.6rem 0.575rem;background-position: 0 0.35rem;font-size:0.55rem;line-height: 1.2rem;color:#333;text-indent:0.825rem;}
+.user-answer{display:inline-block;height: 1.25rem;font-size:0.55rem;line-height: 1.25rem;color:#ffa036;}
+.new-wrap{float:left;width: 12.725rem;position:relative;top:-0.3rem;}
+.answer-co a{display:block;font-size:0.5rem;/* line-height: 0.9rem; */}
+.answer-co{position:relative;height: 1.75rem;margin-bottom:0.375rem;width:12.725rem;}
+.answer-c{color:#818181;position: absolute;top:0;left: 0;width: 100%;}
+.read-all{color:#58b2ff;position: absolute;bottom:0;right: 0;}
+.to-answer{display: block;height: 1.25rem;font-size: 0.55rem;line-height: 1.25rem;color: #58b2ff;}
+/*我要提问*/
+.Ask{height: auto;position:fixed;bottom: 3rem;overflow: hidden;right: 0rem;}
+.Ask a{width: 2.4rem;height: 2.4rem;border-radius: 2.4rem;background: #58b2ff;float: right;margin: 0.4rem;font-size: 0.7rem;color:#fff;line-height: 2.4rem;text-align: center;}
+.Ask a:visited{color:#fff;}
+
+.Load{width:100%;height:3rem;cursor:pointer;}
+.load-more{width:100%;font-size: 0.5rem;text-align: center;line-height: 3rem;}
+.img_loading{width:2.5rem;height:0.5rem;}
+.Blank{width:100%;height:6.5rem;}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zblog.core.dal.mapper.TagMapper">
+    <resultMap id="BaseResultMap" type="com.zblog.core.dal.entity.Tag" >
+        <id  property="id" column="id" jdbcType="INTEGER" />
+        <result  property="name" column="name" jdbcType="VARCHAR" />
+        <result property="postId" column="post_id" jdbcType="INTEGER" />
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id,name,post_id,create_time
+    </sql>
+
+   <select id="list" resultType="MapContainer">
+      select name, count(*) as count from wx_tag group by name order by create_time desc
+   </select>
+   
+   <select id="getTagsByPost" parameterType="java.lang.Integer" resultType="java.lang.String" >
+     select name from wx_tag where post_id=#{postId}
+   </select>
+   
+   <insert id="insertBatch" parameterType="java.util.List">
+      insert into wx_tag(name,post_id,create_time) values
+      <foreach collection="list" item="item" separator=",">
+        (#{item.name}, #{item.postId}, #{item.createTime})
+      </foreach>
+   </insert>
+   
+   <delete id="deleteByPostId" parameterType="java.lang.String">
+     delete from wx_tag where post_id=#{postId}
+   </delete>
+   
+   <delete id="deleteById"  parameterType="java.lang.String">
+    delete from wx_tag where id=#{id}
+   </delete>
+</mapper>

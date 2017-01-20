@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+body{overflow-x:hidden;}
+input{border:none;outline:none;font-family:"微软雅黑";}
+
+/*问答内容*/
+.main-content{width:1200px;margin:0 auto;background:#ffffff;height:1603px;}
+.wrap-left{width:850px;float:left;}
+.wrap-right{width:290px;float:right;}
+.type-nav{width:850px;height: 44px;border-bottom: 1px #e7e7e7 solid;}
+.type-nav ul{float:left;}
+.type-nav li{float:left;width: 100px;background:white;height: 42px;font-size:16px;line-height: 60px;position:relative;text-align: center;cursor:pointer;}
+.type-nav li a{color:#000;}
+.type-active{border-bottom: 2px solid #99ccff;color: #99ccff !important;}
+.type-active a{color: #99ccff !important;}
+/*.type-show a{color:#99ccff !important;}
+.type-show span:nth-of-type(2){width:90px;height:2px;background:#99ccff;display: block;position:absolute;bottom:-1px;}*/
+.all-nav{width:100px;background:white;float:right;height:42px;font-size:16px;line-height: 57px;color:#ffa036;text-indent:9px;}
+.all-nav span:nth-of-type(1){display:inline-block;width:14px;height:14px;background:url(../images/ico_1.png) no-repeat ;margin-right:5px;position:relative;top:2px;}
+.all-nav a{color:#ffa036;}
+/*content_nav*/
+.content-nav{width: 850px;position:relative;}
+.content-nav ul{position:relative;}
+.content-nav ul .content-co{/* position:absolute; */top:0;left:0;width:850px;/* display:none; */}
+.content-nav ul .content-show{/* display:block; */}
+.con-wrap{width:850px;height:155px;border-bottom: 1px #e7e7e7 dashed;position:relative;}
+.con-left{float:left;width:90px;height:155px;}
+.con-middle{float:left;width: 50px;height:25px;}
+.user-head{display: inline-block;width: 50px;height: 50px;border-radius: 50%;background:white;/* position:relative; */overflow: hidden;/* margin-top: 14px; *//* margin-left: 24px; */}
+.user-head img{width: 50px;height: 50px;/* position:absolute; *//* top:0; *//* left:0; *//* margin: 0 auto; */}
+.user-name{display: inline-block;width: 100%;height: 20px;text-align: center;font-size:14px;color:#555555;}
+.user-name:hover{color:#ffa036;text-decoration:underline;}
+.user-help{display: inline-block;width:80px;height:24px;border-radius: 24px;background:#99ccff;font-size:14px;line-height:24px;color:#ffffff;text-align: center;margin-left:4px;margin-top: 4px;position:absolute;top:95px;}
+.con-middle span{display: inline-block;width:26px;height:26px;font-size:14px;color:#fff;line-height:26px;border-radius: 50%;text-align: center;}
+.con-middle .ask{background:#6699ff;margin-left:10px;margin-top: 2px;}
+.con-middle .answer-w{background:#ffa036;margin-left:10px;}
+.con-right{/* width:710px; */float:left;margin-top: 14px;}
+.title-wrap{height:26px;width:758px;/* margin-bottom:5px; */}
+.user-ask{float:left;display: inline-block;font-size:14px;line-height:26px;color: #333333;}
+.user-ask:hover{color:#ffa036;}
+.collect{float:right;position:relative;width:73px;height:26px;cursor:pointer;}
+.collect span{position:absolute;}
+.coll{background:url(../images/star1.png) no-repeat;background-position: 10px 6px;font-size:14px;line-height:26px;color:#ffa036;text-indent:33px ;}
+.ect{background:url(../images/star2.png) no-repeat;background-position: 0 6px;font-size:14px;line-height:26px;color:#ffa036;text-indent:26px ;}
+.hot-word{margin-top: 2px;margin-left: 50px;}
+.hot-word a{font-size: 13px;line-height: 18px;color:#99ccff;padding-left: 8px;padding-right: 8px;border:1px #99ccff solid;border-radius:16px;margin-right:12px;margin-bottom:6px;}
+.hot-word a{display: inline-block; color:#99ccff;}
+.hot-word a:hover{background:#99ccff;color:#fff;}
+.user-answer{display: inline-block;line-height: 25px;color:#ffa036;}
+.user-answer:hover{text-decoration:underline;}
+.answer-c{font-size:14px;line-height: 23px;color: #888;}
+.read-all{float:right;font-size:13px;line-height: 23px;color:#99ccff;}
+.right-h{position:relative;margin-top: 10px;}
+.User-W{width:337px;height:218px;position:absolute;top:22px;left:-93px;display:none;z-index:20;}
+.right-h2{width:82px;position:absolute;text-align: center;margin-top: 14px;}
+.right-h2:hover .User-W2{display: block;}
+.right-h:hover .User-W{display: block;}
+.User-W2{width:337px;height:218px;position:absolute;top:65px;left:-69px;display:none;z-index:20;}
+
+.answer-tn{color:#818181;font-size:13px;line-height: 13px;margin-right:8px;}
+.answer{margin-left: 50px;width: 710px;}
+.read-more{color:#99ccff;line-height: 25px;}

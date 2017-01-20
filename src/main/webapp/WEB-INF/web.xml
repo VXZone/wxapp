@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="3.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.html</url-pattern>
+      <el-ignored>true</el-ignored>
+      <page-encoding>UTF-8</page-encoding>
+    </jsp-property-group>
+    <!-- 去掉jsp指令/jstl标签造成的空白行 -->
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <trim-directive-whitespaces>true</trim-directive-whitespaces>
+    </jsp-property-group>
+  </jsp-config>
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:config/spring-base.xml</param-value>
+  </context-param>
+
+  <!-- 注：此listener需在spring的ContextLoaderListener前  -->
+  <listener>
+    <listener-class>com.zblog.web.listener.InitApplicationListener</listener-class>
+  </listener>
+  <!-- 系统启动监听器 -->
+  <listener>
+    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <!-- Servlet规范要求表单数据可用于POST，但没要求PUT和PATCH -->
+  <filter>
+    <filter-name>HttpPutFormContentFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>
+    <async-supported>true</async-supported>
+  </filter>
+  <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>com.zblog.web.filter.LoginFilter</filter-class>
+    <async-supported>true</async-supported>
+  </filter>
+  <filter>
+    <filter-name>XssFilter</filter-name>
+    <filter-class>com.zblog.web.filter.XssFilter</filter-class>
+    <async-supported>true</async-supported>
+    <!-- 字符编码过滤 -->
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+   <!-- 注意xssFilter需配置在csrfFilter之前 -->
+  <filter>
+    <filter-name>StatelessCsrfFilter</filter-name>
+    <filter-class>com.zblog.web.filter.StatelessCsrfFilter</filter-class>
+    <async-supported>true</async-supported>
+    <init-param>
+      <param-name>exclude</param-name>
+      <!-- 基于ant风格的url匹配 -->
+      <param-value>/resource/**,/comments/**,/xmlrpc/**</param-value>
+    </init-param>
+  </filter>
+  <!-- 隐藏的HttpMethod方法过滤器，表单提交中需要携带一个name=_method的隐藏域，value=put或者delete -->
+  <filter>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    <async-supported>true</async-supported>
+  </filter>
+
+  <servlet>
+    <servlet-name>Zblog</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+    <async-supported>true</async-supported>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:config/spring-servlet.xml</param-value>
+    </init-param>
+  </servlet>
+  
+  <filter-mapping>
+    <filter-name>HttpPutFormContentFilter</filter-name>
+    <servlet-name>Zblog</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <servlet-name>Zblog</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>XssFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>StatelessCsrfFilter</filter-name>
+    <servlet-name>Zblog</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+     <filter-name>HiddenHttpMethodFilter</filter-name>
+     <servlet-name>Zblog</servlet-name>
+  </filter-mapping>
+  
+  <!-- 激活Tomcat的defaultServlet来处理静态文件 -->
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/resource/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/post/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Zblog</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <!-- 设置Session时长:以分钟为单位;如果是零或负数,那么会话就永远不会超时。注：当前程序不使用session，使用cookie -->
+  <session-config>
+    <session-timeout>1</session-timeout>
+  </session-config>
+
+  <!-- 缺省首页 -->
+  <welcome-file-list>
+    <welcome-file>/</welcome-file>
+  </welcome-file-list>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/resource/error/404.html</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/resource/error/500.html</location>
+  </error-page>
+
+</web-app>

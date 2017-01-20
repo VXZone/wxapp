@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                           http://www.springframework.org/schema/aop 
+                           http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+                           http://www.springframework.org/schema/cache 
+                           http://www.springframework.org/schema/cache/spring-cache-4.1.xsd">
+  
+  <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+    <property name="cacheManager">
+      <bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:config/ehcache.xml" />
+      </bean>
+    </property>
+    <property name="transactionAware" value="true" />
+  </bean>
+  <aop:config>
+    <aop:advisor advice-ref="userAdvisor" pointcut="target(com.zblog.service.UserService) and 
+       (execution(* loadById(..)) || execution(* update(..)) || execution(* deleteById(..)))"/>
+    
+    <aop:advisor advice-ref="postAdvisor" pointcut="target(com.zblog.service.PostService) and 
+       (execution(* loadById(..)) || execution(* update(..)) || execution(* deleteById(..)))" />
+       
+    <aop:advisor advice-ref="prenextAdvisor" pointcut="target(com.zblog.service.PostService) and 
+       (execution(* getPrevPost(..)) || execution(* getNextPost(..)) || execution(* insert(..)) ||
+        execution(* update(..)) || execution(* deleteById(..)))" />
+        
+    <aop:advisor advice-ref="tagAdvisor" pointcut="target(com.zblog.service.TagService) and 
+       (execution(* listTagsByPost(..)) || execution(* deleteByPostId(..)))" />
+       
+    <aop:advisor advice-ref="channelAdvisor" pointcut="target(com.zblog.service.ChannelService) and
+       (execution(* loadById(..)) || execution(* remove(..)) || execution(* loadByName(..)))" />
+        
+    <aop:advisor advice-ref="optionAdvisor" pointcut="target(com.zblog.service.OptionsService) and
+       (execution(* getOptionValue(..)) || execution(* updateOptionValue(..)))" />
+  </aop:config>
+  
+  <cache:advice id="userAdvisor" cache-manager="cacheManager">
+    <cache:caching cache="users">
+      <!-- cache-put是每次都会执行该方法，并将执行结果以键值对的形式存入指定的缓存中 -->
+      <!-- 判断unless,如果返回false,则放入缓存;(即跟condition相反) -->
+      <cache:cacheable method="loadById" key="#p0" unless="#result==null" />
+      <cache:cache-evict method="update" key="#p0.id" />
+      <cache:cache-evict method="deleteById" key="#p0" />
+    </cache:caching>
+  </cache:advice>
+  
+  <cache:advice id="postAdvisor" cache-manager="cacheManager">
+    <cache:caching cache="posts">
+       <cache:cacheable method="loadById" key="#p0" />
+       <cache:cache-evict method="update" key="#p0.id" />
+       <cache:cache-evict method="deleteById" key="#p0" />
+    </cache:caching>
+  </cache:advice>
+  
+  <cache:advice id="prenextAdvisor" cache-manager="cacheManager">
+    <cache:caching cache="prevnexts">
+      <cache:cacheable method="getNextPost" key="'next-' + #p0" />
+      <cache:cacheable method="getPrevPost" key="'prev-' + #p0" />
+      <cache:cache-evict method="insert" all-entries="true" />
+      <cache:cache-evict method="update" all-entries="true" />
+      <cache:cache-evict method="deleteById" all-entries="true"  />
+    </cache:caching>
+  </cache:advice>
+  
+  <cache:advice id="tagAdvisor" cache-manager="cacheManager">
+    <cache:caching cache="tags">
+       <cache:cacheable method="listTagsByPost" key="#p0" />
+       <cache:cache-evict method="deleteByPostId" key="#p0" />
+    </cache:caching>
+  </cache:advice>
+  
+  <cache:advice id="channelAdvisor" cache-manager="cacheManager">
+    <cache:caching cache="channels">
+       <cache:cacheable method="loadById" key="#p0" />
+       <cache:cacheable method="loadByName" key="#p0" />
+       <cache:cache-evict method="remove" all-entries="true" />
+    </cache:caching>
+  </cache:advice>
+  
+  <cache:advice id="optionAdvisor" cache-manager="cacheManager">
+    <cache:caching cache="option">
+      <cache:cacheable method="getOptionValue" key="#p0" unless="#result==null" />
+      <cache:cache-evict method="updateOptionValue" key="#p0" />
+    </cache:caching>
+  </cache:advice>
+  
+</beans>

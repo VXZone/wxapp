@@ -1,0 +1,36 @@
+@charset "utf-8";
+/*切换导航*/
+/*.quiz{width:100%;margin-top:2.2rem;}
+.quiz-ti{margin-top:4.975rem;margin-left: 2.025rem;}
+.quiz-ti p:nth-of-type(1){font-size:1.2rem;color:#58b2ff;margin-bottom: 0.25rem;}
+.quiz-ti p:nth-of-type(2){font-size:0.6rem;color:#515151;}
+
+
+.quiz-co{width:100%;margin-top:1.5rem;margin-left: 0.75rem;}
+.my-qu{width:14.45rem;height:1.45rem;border: 1px #cccccc solid;overflow: hidden;font-size: 0.5rem;color:#cccccc;text-indent: 0.25rem;}
+.supply{font-size: 0.5rem;height:1.225rem;line-height: 1.225rem;color: #333;}
+.su-qu{width:14.25rem;height:4.45rem;border: 1px #cccccc solid;overflow: hidden;font-size: 0.5rem;color:#cccccc;padding-left: 0.25rem;outline:none;resize:none;line-height: 0.75rem;}
+.submit{display: block;width:14.5rem;height:1.5rem;border-radius: 10px;background: #58b2ff;color:#fff;font-size: 0.6rem;line-height: 1.5rem;text-align: center;margin-top:0.6rem;}
+
+ .leftsideBar{ font-size: 0.5rem;height: auto;line-height: 1.225rem;color: #333;width: 14.45rem;}
+ .leftsideBar span{background-color: #58b2ff;padding: 0.16rem;margin-right: 0.6rem;color: white;}*/
+
+/*切换导航*/
+.quiz{width:100%;margin-top:2.2rem;}
+.quiz-ti{margin-top:4.975rem;margin-left: 2.025rem;}
+.quiz-ti p:nth-of-type(1){font-size:1.2rem;color:#58b2ff;margin-bottom: 0.25rem;}
+.quiz-ti p:nth-of-type(2){font-size:0.6rem;color:#515151;}
+
+
+.quiz-co{margin-top:1.5rem;margin-left: 0.75rem;margin-bottom:3.5rem;}
+.my-qu{width:14.45rem;height:1.45rem;border: 1px #cccccc solid;overflow: hidden;font-size: 0.5rem;color:#cccccc;text-indent: 0.25rem;}
+.supply{font-size: 0.5rem;height:1.225rem;line-height: 1.225rem;color: #333;}
+.su-qu{width:14.25rem;height:4.45rem;border: 1px #cccccc solid;overflow: hidden;font-size: 0.5rem;color:#cccccc;padding-left: 0.25rem;outline:none;resize:none;line-height: 0.75rem;}
+.submit{display: block;width:14.5rem;height:1.5rem;border-radius: 10px;background: #58b2ff;color:#fff;font-size: 0.6rem;line-height: 1.5rem;text-align: center;margin-top:1rem;-webkit-appearance: none;}
+
+
+.leftsideBar{font-size:0.5rem;color:#666;}
+.leftsideBar span{display:inline-block;padding-left:0.25rem;padding-right:0.25rem;color:#fff;background:#99ccff;padding-top:0.2rem;padding-bottom:0.2rem;margin-left: 0.25rem;cursor: pointer;margin-bottom:0.2rem;}
+.leftsideBar p{float:left;}
+.p-tag{width:11.55rem;}
+.leftsideBar i{display: inline-block;margin-top: 0.25rem;}

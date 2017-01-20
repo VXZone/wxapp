@@ -1,0 +1,48 @@
+*{margin:0;padding:0;}
+li{ list-style:none;}
+a{ text-decoration:none;}
+.clear{ zoom:1;}
+.clear:after{ content:"";display:block; clear:both;}
+body{font-family:"微软雅黑";}
+input{border:none;outline:none;font-family:"微软雅黑";}
+/*切换导航*/
+.M-answer{width:100%;position: relative;margin-top:2.2rem;height:1.3rem;border-bottom:1px #e7e7e7 solid;}
+.M-answer ul{height: 1.3rem;margin-left: 0.75rem;margin-right: 0.75rem;}
+.M-answer ul li{width: 2.8rem;float: left;text-align: center;font-size: 0.6rem;color:#333;}
+.M-answer ul li span{display: block;}
+.M-answer ul li span:nth-of-type(1){width:100%;height:1.275rem;line-height:1.3rem;}
+.M-answer ul li span:nth-of-type(1) a{color:#333;}
+.M-answer ul li span:nth-of-type(1) a:visited{color:#333;}
+.M-answer ul .m-show span:nth-of-type(2){width:100%;height:0.05rem;background: #58b2ff;}
+.M-answer ul .m-show span:nth-of-type(1) a{color: #58b2ff;}
+.M-answer ul li:nth-of-type(1){margin-right: 1rem;}
+.M-answer ul li:nth-of-type(2){margin-right:1rem;}
+.M-answer ul li:nth-of-type(3){margin-right:1rem;}
+
+
+
+.qus-wrap{width:100%;}
+.qus-con{display: none;}
+.qus-show{display: block;}
+.qus-wrap ul li{width:100%;border-bottom:1px #e7e7e7 solid;}
+.qus1{margin-top:0.45rem;margin-bottom:0.5rem;font-size: 0.6rem;color:#333;margin-left: 0.75rem;float: left;}
+.qus2{margin-top:0.45rem;margin-bottom:0.5rem;font-size: 0.5rem;color:#ccc;float: right;margin-right: 0.75rem;}
+.ques3{width:14.5rem;margin-top:0.45rem;margin-bottom:0.375rem;margin-left: 0.75rem;font-size:0.6rem;color:#333;display:block;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+
+.ques4{font-size:0.55rem;color:#ccc;margin-left: 0.75rem;}
+
+.ques4 span{display: block;float:left;margin-bottom: 0.45rem;margin-right: 1.575rem;}
+.ques5{margin-top:0.45rem;font-size:0.6rem;color:#333;margin-left: 0.75rem;margin-right: 0.75rem;line-height:0.9rem;}
+.ques5 a{font-size:0.6rem;color:#ff6600;text-decoration: underline;line-height:0.9rem;}
+.horn-user{color:#ccc;margin-right: 0.4rem;font-size:0.6rem;}
+.horn-com{margin-right: 0.4rem;font-size:0.6rem;}
+.horn-que {margin-right:0.4rem;}
+.ques6{font-size:0.55rem;color:#ccc;margin-right: 0.75rem;margin-bottom:0.5rem;}
+.time-b{float: right;}
+.time-s{margin-left:0.4rem;}
+.horn-agr{font-size:0.6rem;}
+
+.Load{width:100%;height:3rem;cursor:pointer;}
+.load-more{width:100%;font-size: 0.5rem;text-align: center;line-height:1.5rem;}
+.img_loading{width:2.5rem;height:0.5rem;}
+.Blank{width:100%;height:6.5rem;}
